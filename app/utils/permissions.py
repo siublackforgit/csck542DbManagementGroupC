@@ -3,8 +3,6 @@ from tkinter import messagebox
 def validate_role_permissions(app):
     """
     Check if the selected role has permission to run the selected query
-    :param app: Instance of UniversityDBApp
-    :return: True if allowed, False if denied
     """
     selected_role = app.role_var.get()
     selected_query = app.query_var.get()
@@ -23,7 +21,6 @@ def validate_role_permissions(app):
 def update_role_ui(app):
     """
     Update UI when the selected role changes (update query dropdown/info)
-    :param app: Instance of UniversityDBApp
     """
     selected_role = app.role_var.get()
     allowed_queries = app.ROLE_PERMISSIONS.get(selected_role, [])

@@ -1,8 +1,6 @@
 def sort_treeview_column(app, col):
     """
     Sort treeview column (asc/desc toggle)
-    :param app: Instance of UniversityDBApp (access to current_rows/sort_states/result_tree)
-    :param col: Column name to sort by
     """
     if not app.current_rows:
         return

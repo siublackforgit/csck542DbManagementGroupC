@@ -5,8 +5,6 @@ from tkinter import filedialog, messagebox
 def export_results_to_csv(current_rows, status_var):
     """
     Export query results to a CSV file
-    :param current_rows: List of dict (query results from DB)
-    :param status_var: tk.StringVar (for updating app status)
     """
     if not current_rows:
         messagebox.showwarning("No Data", "There are no query results to export.")

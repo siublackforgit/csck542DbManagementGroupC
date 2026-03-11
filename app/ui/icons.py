@@ -7,8 +7,7 @@ _icon_references = {}
 
 def _get_search_paths() -> List[str]:
     """
-    Build a list of paths to search for icon files (prioritizes the assets folder)
-    :return: List of absolute paths to search
+    Build a list of paths to search for icon files
     """
     search_paths = []
     try:
@@ -36,10 +35,6 @@ def load_single_icon(
 ) -> Optional[tk.PhotoImage]:
     """
     Load a single icon from the search paths (handles multiple filename variations)
-    
-    :param icon_names: List of possible filenames (e.g., ["Run_Query.png", "Run Query.png"])
-    :param subsample: (x, y) factor to resize the icon (higher = smaller)
-    :return: tk.PhotoImage if found, None otherwise
     """
     global _icon_references
     
@@ -71,8 +66,6 @@ def load_single_icon(
 def load_app_icons() -> Dict[str, Optional[tk.PhotoImage]]:
     """
     Load all application icons and return them in a structured dictionary
-    
-    :return: Dict with keys: header, run, clear, refresh
     """
     icons = {
         "header": load_single_icon(
