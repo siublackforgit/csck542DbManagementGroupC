@@ -1,5 +1,8 @@
+import os
 import tkinter as tk
+
 from app.ui.main_window import UniversityDBApp
+
 
 def main():
     root = tk.Tk()
@@ -9,15 +12,13 @@ def main():
 
     # Load app icon (optional, move to app/ui/icons.py if needed)
     try:
-        import os
         base_dir = os.path.dirname(os.path.abspath(__file__))
-        possible_paths = [
-            os.path.join(base_dir, "Univeristy_Icon.png"),
+        icon_paths = [
             os.path.join(base_dir, "University_Icon.png"),
-            os.path.join(base_dir, "assets", "Univeristy_Icon.png"),
             os.path.join(base_dir, "assets", "University_Icon.png"),
         ]
-        for icon_path in possible_paths:
+
+        for icon_path in icon_paths:
             if os.path.exists(icon_path):
                 app_icon = tk.PhotoImage(file=icon_path)
                 root.iconphoto(True, app_icon)
@@ -36,6 +37,7 @@ def main():
 
     root.protocol("WM_DELETE_WINDOW", on_closing)
     root.mainloop()
+
 
 if __name__ == "__main__":
     print("Launching app...")

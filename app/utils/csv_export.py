@@ -2,10 +2,9 @@ import csv
 import os
 from tkinter import filedialog, messagebox
 
+
 def export_results_to_csv(current_rows, status_var):
-    """
-    Export query results to a CSV file
-    """
+    """Export query results to a CSV file."""
     if not current_rows:
         messagebox.showwarning("No Data", "There are no query results to export.")
         return
@@ -16,7 +15,7 @@ def export_results_to_csv(current_rows, status_var):
         title="Save Query Results"
     )
 
-    if not file_path:  
+    if not file_path:
         return
 
     try:

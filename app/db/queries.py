@@ -1,8 +1,11 @@
 # app/db/queries.py
+
+
 def get_query_definitions():
     return {
         "1. Students enrolled in a specific course taught by a particular lecturer": {
-            "description": "Returns students enrolled in the chosen course where the course is assigned to the selected lecturer.",
+            "description": "Returns students enrolled in the chosen course where "
+            "the course is assigned to the selected lecturer.",
             "filters": ["course", "lecturer"],
             "sql": """
                 SELECT
@@ -20,7 +23,12 @@ def get_query_definitions():
                   AND (%s = 'All' OR l.name = %s)
                 ORDER BY s.name;
             """,
-            "params": lambda f: (f["course"], f["course"], f["lecturer"], f["lecturer"])
+            "params": lambda f: (
+                f["course"],
+                f["course"],
+                f["lecturer"],
+                f["lecturer"]
+            )
         },
 
         "2. Students with average grade above 70% (final year)": {
@@ -48,7 +56,8 @@ def get_query_definitions():
         },
 
         "3. Students not registered in any course (current semester)": {
-            "description": "Finds students who do not have any enrollment record for the current semester.",
+            "description": "Finds students who do not have any enrollment record "
+            "for the current semester.",
             "filters": ["program"],
             "sql": """
                 SELECT
@@ -69,7 +78,8 @@ def get_query_definitions():
         },
 
         "4. Faculty advisor contact info for a specific student": {
-            "description": "Returns advisor details for the selected student (uses advisor_id in students table).",
+            "description": "Returns advisor details for the selected student "
+            "(uses advisor_id in students table).",
             "filters": ["student"],
             "sql": """
                 SELECT
@@ -89,7 +99,8 @@ def get_query_definitions():
         },
 
         "5. Lecturers with expertise in a particular area": {
-            "description": "Lists lecturers whose expertise matches the selected research area.",
+            "description": "Lists lecturers whose expertise matches "
+            "the selected research area.",
             "filters": ["expertise"],
             "sql": """
                 SELECT
@@ -107,7 +118,8 @@ def get_query_definitions():
         },
 
         "6. Courses taught by lecturers in a specific department": {
-            "description": "Shows all courses offered by lecturers from the selected department.",
+            "description": "Shows all courses offered by lecturers "
+            "from the selected department.",
             "filters": ["department"],
             "sql": """
                 SELECT DISTINCT
@@ -126,7 +138,8 @@ def get_query_definitions():
         },
 
         "7. Lecturers who supervised the most research projects": {
-            "description": "Ranks lecturers by the number of research projects they supervise (principal investigator).",
+            "description": "Ranks lecturers by the number of research projects "
+            "they supervise (principal investigator).",
             "filters": [],
             "sql": """
                 SELECT
@@ -164,7 +177,8 @@ def get_query_definitions():
         },
 
         "9. Students advised by a specific lecturer": {
-            "description": "Lists all students supervised/advised by the selected lecturer.",
+            "description": "Lists all students supervised/advised "
+            "by the selected lecturer.",
             "filters": ["lecturer"],
             "sql": """
                 SELECT
@@ -182,7 +196,8 @@ def get_query_definitions():
         },
 
         "10. All staff in a specific department": {
-            "description": "Lists all non-academic staff members employed in the selected department.",
+            "description": "Lists all non-academic staff members "
+            "employed in the selected department.",
             "filters": ["department"],
             "sql": """
                 SELECT
@@ -201,7 +216,8 @@ def get_query_definitions():
         },
 
         "11. Employees supervising students in a particular program": {
-            "description": "Identifies lecturers/staff who supervise students in the selected program.",
+            "description": "Identifies lecturers/staff who supervise "
+            "students in the selected program.",
             "filters": ["program"],
             "sql": """
                 SELECT DISTINCT
@@ -221,6 +237,7 @@ def get_query_definitions():
             "params": lambda f: (f["program"], f["program"])
         }
     }
+
 
 def get_role_permissions():
     return {
@@ -247,5 +264,5 @@ def get_role_permissions():
             "9. Students advised by a specific lecturer",
             "10. All staff in a specific department"
         ],
-        "Administrator": list(get_query_definitions().keys())  # All queries
+        "Administrator": list(get_query_definitions().keys())
     }

@@ -1,7 +1,9 @@
 # app/db/filters.py
+
+
 def populate_all_filter_values(app):
-    """
-    Populate all filter dropdowns with values from the database
+    """Populate all filter dropdowns with values from the database.
+
     :param app: Instance of UniversityDBApp
     """
     if not app.db_manager.cursor:
@@ -39,9 +41,10 @@ def populate_all_filter_values(app):
     for key in app.filter_vars:
         app.filter_vars[key].set("All")
 
+
 def on_department_change(app):
-    """
-    Update lecturer/course/program filters when department is selected
+    """Update lecturer/course/program filters when department is selected.
+
     :param app: Instance of UniversityDBApp
     """
     selected_department = app.filter_vars["department"].get()
@@ -95,9 +98,10 @@ def on_department_change(app):
     if app.filter_vars["program"].get() not in programs:
         app.filter_vars["program"].set("All")
 
+
 def on_lecturer_change(app):
-    """
-    Update course filter when lecturer is selected
+    """Update course filter when lecturer is selected.
+
     :param app: Instance of UniversityDBApp
     """
     selected_lecturer = app.filter_vars["lecturer"].get()

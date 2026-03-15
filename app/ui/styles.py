@@ -1,8 +1,9 @@
 import tkinter as tk
 from tkinter import ttk
 
+
 def get_color_scheme():
-    """Return the color palette for the app"""
+    """Return the color palette for the app."""
     return {
         "bg_main": "#eef3f8",
         "bg_card": "#ffffff",
@@ -30,8 +31,9 @@ def get_color_scheme():
         "control_hover_bg": "#eef6ff"
     }
 
+
 def configure_styles(style, colors):
-    """Configure ttk styles for the app"""
+    """Configure ttk styles for the app."""
     style.theme_use("clam")
 
     style.configure("Card.TFrame", background=colors["bg_card"])
@@ -44,8 +46,9 @@ def configure_styles(style, colors):
     )
     # Add the rest of your style configurations here
 
+
 def create_accessible_button(parent, text, icon, colors, command):
-    """Reusable function to create styled buttons"""
+    """Reusable function to create styled buttons."""
     btn = tk.Button(
         parent,
         text=text,
@@ -69,14 +72,19 @@ def create_accessible_button(parent, text, icon, colors, command):
     btn.bind("<Leave>", lambda event, b=btn: on_button_hover_out(b))
     return btn
 
+
 def on_button_hover_in(button):
+    """Handle mouse enter event for buttons."""
     button.configure(bg=button.hover_bg)
 
+
 def on_button_hover_out(button):
+    """Handle mouse leave event for buttons."""
     button.configure(bg=button.default_bg)
 
+
 def create_hoverable_control_wrapper(parent, colors):
-    """Create a hoverable wrapper for input controls"""
+    """Create a hoverable wrapper for input controls."""
     wrapper = tk.Frame(
         parent,
         bg=colors["border"],
@@ -87,13 +95,20 @@ def create_hoverable_control_wrapper(parent, colors):
     )
     return wrapper
 
+
 def bind_control_hover(wrapper, widget, colors):
-    """Bind hover/focus events to control wrappers"""
+    """Bind hover/focus events to control wrappers."""
     def hover_in(event=None):
-        wrapper.config(highlightbackground=colors["hover_outline"], bg=colors["hover_outline"])
+        wrapper.config(
+            highlightbackground=colors["hover_outline"],
+            bg=colors["hover_outline"]
+        )
 
     def hover_out(event=None):
-        wrapper.config(highlightbackground=colors["border"], bg=colors["border"])
+        wrapper.config(
+            highlightbackground=colors["border"],
+            bg=colors["border"]
+        )
 
     wrapper.bind("<Enter>", hover_in)
     wrapper.bind("<Leave>", hover_out)

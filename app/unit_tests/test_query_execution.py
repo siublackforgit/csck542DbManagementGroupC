@@ -1,8 +1,11 @@
 import unittest
+
 import mysql.connector
 from mysql.connector import Error
+
 from app.db.config import DB_CONFIG
 from app.db.queries import get_query_definitions
+
 
 TEST_FILTERS = {
     "department": "Computer Science",
@@ -12,6 +15,7 @@ TEST_FILTERS = {
     "program": "BSc Computer Science",
     "expertise": "Artificial Intelligence"
 }
+
 
 class TestQueryExecution(unittest.TestCase):
     @classmethod
@@ -25,7 +29,7 @@ class TestQueryExecution(unittest.TestCase):
         try:
             cls.cursor.close()
             cls.connection.close()
-        except:
+        except Exception:
             pass
 
     def test_all_11_queries_execute_successfully(self):
@@ -36,11 +40,12 @@ class TestQueryExecution(unittest.TestCase):
                     params = query_data["params"](TEST_FILTERS)
 
                     self.cursor.execute(sql, params)
-                    self.cursor.fetchall()  # 🔥 修复核心：必须读结果
+                    self.cursor.fetchall()  # Must read result to complete execution
 
                     print(f"✅ {query_name}")
                 except Exception as e:
                     self.fail(f"❌ {query_name} -> {str(e)}")
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
