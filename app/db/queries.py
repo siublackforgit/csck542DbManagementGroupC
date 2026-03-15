@@ -75,6 +75,8 @@ def get_query_definitions():
                 SELECT
                     s.name AS student_name,
                     l.name AS advisor_name,
+                    l.email as advisor_email,
+                    l.phone as advisor_phone,
                     d.department_name,
                     d.faculty
                 FROM students s
