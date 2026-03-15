@@ -1,6 +1,6 @@
 DB_CONFIG = {
     "host": "localhost",
-    "user": "root",
-    "password": "975314",
+    "user": "",  #Enter your local host username 
+    "password": "975314", #Enter your local host password
     "database": "universityrecordsystem"
 }
