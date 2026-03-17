@@ -81,6 +81,10 @@ def load_app_icons() -> Dict[str, Optional[tk.PhotoImage]]:
         "refresh": load_single_icon(
             icon_names=["Refresh.png", "refresh.png"],
             subsample=(14, 14)
+        ),
+        "csv": load_single_icon(
+            icon_names=["Download.png"],
+            subsample=(34, 34)
         )
     }
 

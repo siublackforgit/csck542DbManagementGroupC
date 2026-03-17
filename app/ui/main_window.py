@@ -127,89 +127,80 @@ class UniversityDBApp:
         # Action Buttons Frame
         action_frame = ttk.Frame(self.root, style="Card.TFrame")
         action_frame.grid(row=2, column=0, sticky="ew", padx=18, pady=(0, 8))
+        
+        BTN_WIDTH = 140    
+        BTN_HEIGHT = 38
 
         # Run Query Button
         self.run_button = create_accessible_button(
             parent=action_frame,
             text="Run Query",
-            icon=self.icons["run"],
+            icon=self.icons.get("run"),
             colors=self.colors,
             command=self.run_selected_query
         )
-        self.run_button.pack(side="left", padx=(0, 10))
+        self.run_button.configure(
+            bg=self.colors["button_run"],
+            activebackground=self.colors["button_run_hover"],
+            width=BTN_WIDTH,
+            height=BTN_HEIGHT
+        )
         self.run_button.default_bg = self.colors["button_run"]
-        self.run_button.hover_bg = self.colors["button_run_hover"]
+        self.run_button.hover_bg   = self.colors["button_run_hover"]
+        self.run_button.pack(side="left", padx=(0, 10))
 
         # Clear Results Button
-        self.clear_button = tk.Button(
-            action_frame,
+        self.clear_button = create_accessible_button(
+            parent=action_frame,
             text="Clear Results",
-            image=self.icons["clear"],
-            compound="left",
-            command=self.clear_results,
+            icon=self.icons.get("clear"),
+            colors=self.colors,
+            command=self.clear_results
+        )
+        self.clear_button.configure(
             bg=self.colors["button_clear"],
             activebackground=self.colors["button_clear_hover"],
-            fg=self.colors["button_text"],
-            activeforeground=self.colors["button_text"],
-            font=("Segoe UI", 10, "bold"),
-            padx=14,
-            pady=8,
-            bd=0,
-            relief="flat",
-            cursor="hand2"
+            width=BTN_WIDTH,
+            height=BTN_HEIGHT
         )
         self.clear_button.default_bg = self.colors["button_clear"]
-        self.clear_button.hover_bg = self.colors["button_clear_hover"]
-        self.clear_button.bind("<Enter>", lambda e, b=self.clear_button: on_button_hover_in(b))
-        self.clear_button.bind("<Leave>", lambda e, b=self.clear_button: on_button_hover_out(b))
+        self.clear_button.hover_bg   = self.colors["button_clear_hover"]
         self.clear_button.pack(side="left", padx=(0, 10))
 
         # Refresh Filters Button
-        self.refresh_button = tk.Button(
-            action_frame,
+        self.refresh_button = create_accessible_button(
+            parent=action_frame,
             text="Refresh Filters",
-            image=self.icons["refresh"],
-            compound="left",
-            command=self.refresh_filters,
+            icon=self.icons.get("refresh"),
+            colors=self.colors,
+            command=self.refresh_filters
+        )
+        self.refresh_button.configure(
             bg=self.colors["button_refresh"],
             activebackground=self.colors["button_refresh_hover"],
-            fg=self.colors["button_text"],
-            activeforeground=self.colors["button_text"],
-            font=("Segoe UI", 10, "bold"),
-            padx=14,
-            pady=8,
-            bd=0,
-            relief="flat",
-            cursor="hand2"
+            width=BTN_WIDTH,
+            height=BTN_HEIGHT
         )
         self.refresh_button.default_bg = self.colors["button_refresh"]
-        self.refresh_button.hover_bg = self.colors["button_refresh_hover"]
-        self.refresh_button.bind("<Enter>", lambda e, b=self.refresh_button: on_button_hover_in(b))
-        self.refresh_button.bind("<Leave>", lambda e, b=self.refresh_button: on_button_hover_out(b))
+        self.refresh_button.hover_bg   = self.colors["button_refresh_hover"]
         self.refresh_button.pack(side="left", padx=(0, 10))
 
         # Export CSV Button
-        self.export_button = tk.Button(
-            action_frame,
+        self.export_button = create_accessible_button(
+            parent=action_frame,
             text="Export CSV",
-            icon=None,
-            compound="left",
-            command=lambda: export_results_to_csv(self.current_rows, self.status_var),
+            icon=self.icons.get("csv"),   
+            colors=self.colors,
+            command=lambda: export_results_to_csv(self.current_rows, self.status_var)
+        )
+        self.export_button.configure(
             bg=self.colors["button_export"],
             activebackground=self.colors["button_export_hover"],
-            fg=self.colors["button_text"],
-            activeforeground=self.colors["button_text"],
-            font=("Segoe UI", 10, "bold"),
-            padx=14,
-            pady=8,
-            bd=0,
-            relief="flat",
-            cursor="hand2"
+            width=BTN_WIDTH,
+            height=BTN_HEIGHT
         )
         self.export_button.default_bg = self.colors["button_export"]
-        self.export_button.hover_bg = self.colors["button_export_hover"]
-        self.export_button.bind("<Enter>", lambda e, b=self.export_button: on_button_hover_in(b))
-        self.export_button.bind("<Leave>", lambda e, b=self.export_button: on_button_hover_out(b))
+        self.export_button.hover_bg   = self.colors["button_export_hover"]
         self.export_button.pack(side="left", padx=(0, 10))
 
         # Result Count Label

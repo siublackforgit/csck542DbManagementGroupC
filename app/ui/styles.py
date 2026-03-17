@@ -47,7 +47,7 @@ def configure_styles(style, colors):
     # Add the rest of your style configurations here
 
 
-def create_accessible_button(parent, text, icon, colors, command):
+def create_accessible_button(parent, text, icon=None, colors=None, command=None):
     """Reusable function to create styled buttons."""
     btn = tk.Button(
         parent,
@@ -60,8 +60,8 @@ def create_accessible_button(parent, text, icon, colors, command):
         fg=colors["button_text"],
         activeforeground=colors["button_text"],
         font=("Segoe UI", 10, "bold"),
-        padx=14,
-        pady=8,
+        padx=12,  
+        pady=6,
         bd=0,
         relief="flat",
         cursor="hand2"
