@@ -1,3 +1,7 @@
+#Database Creation
+Please execute university_schema_v4.sql file in your local database,  the sql already included data
+
+
 #Prerequisites
 
 Python 3.11.0
